@@ -12,6 +12,32 @@
         android:layout_marginStart="40dp"
         android:layout_marginTop="36dp"
         android:text="person"
+        android:textSize="18sp"
+        android:textStyle="bold"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
+
+    <LinearLayout
+        android:layout_width="198dp"
+        android:layout_height="56dp"
+        android:layout_marginTop="36dp"
+        android:layout_marginEnd="24dp"
+        android:orientation="horizontal"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <Button
+            android:id="@+id/personTemplateEdit"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:backgroundTint="#E69150"
+            android:text="Editar" />
+
+        <Button
+            android:id="@+id/personTemplateDelete"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:backgroundTint="#B62323"
+            android:text="Eliminar" />
+    </LinearLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>

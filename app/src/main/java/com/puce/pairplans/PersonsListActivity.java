@@ -1,11 +1,11 @@
 package com.puce.pairplans;
 
-import android.content.Intent;
+import android.app.Dialog;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
-import android.widget.AdapterView;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.ListView;
 import android.widget.Toast;
 
@@ -24,11 +24,12 @@ import retrofit2.Response;
 import retrofit2.Retrofit;
 
 public class PersonsListActivity extends AppCompatActivity {
-    Button AddPersonButton;
+    Button AddPersonButton, GuideButtonP;
     List<Person> PersonsList = new ArrayList<>();
     ListView PersonsListLV;
     Retrofit retrofit;
     APIPersons api;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -42,6 +43,9 @@ public class PersonsListActivity extends AppCompatActivity {
         });
 
         AddPersonButton = findViewById(R.id.addPersonButton);
+        GuideButtonP = findViewById(R.id.guideButtonP);
+
+
         PersonsListLV = (ListView) findViewById(R.id.personsListLV);
         PersonsAdapter adapter = new PersonsAdapter(this, PersonsList);
 
@@ -51,13 +55,19 @@ public class PersonsListActivity extends AppCompatActivity {
         getPersons(api);
 
 
-        PersonsListLV.setOnItemClickListener(new AdapterView.OnItemClickListener(){
+
+
+        AddPersonButton.setOnClickListener(new View.OnClickListener(){
             @Override
-            public void onItemClick(AdapterView adapterview, View view, int i, long l){
-                Person selectedPerson = PersonsList.get(i);
-                Intent intent = new Intent(PersonsListActivity.this, PersonActivitiesListActivity.class);
-                intent.putExtra("person_id", selectedPerson.getId());
-                startActivity(intent);
+            public void onClick(View v){
+                showAddDialog();
+            };
+        });
+
+        GuideButtonP.setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View v){
+                showGuideDialog();
             };
         });
 
@@ -87,5 +97,69 @@ public class PersonsListActivity extends AppCompatActivity {
             }
         });
     }
+
+    public void addPerson(final APIPersons api, String name) {
+        Person person = new Person();
+        person.setName(name);
+
+        Call<Void> call = api.addPersonI(person);
+        call.enqueue(new Callback<Void>() {
+            @Override
+            public void onResponse(Call<Void> call, Response<Void> response) {
+                Log.d("TAG", "Codigo "+response.code());
+                Log.d("TAG", "Body "+response.body());
+                Log.d("TAG", "Error Body "+response.errorBody());
+                Log.d("TAG", "Mensaje "+response.message());
+                Log.d("TAG", "RAW "+response.raw());
+                Log.d("TAG", "Headers "+response.headers());
+
+                if (response.isSuccessful()) {
+                    Toast.makeText(PersonsListActivity.this, "Se agregó correctamente :D", Toast.LENGTH_SHORT).show();
+                    getPersons(api);
+                } else {
+                    Toast.makeText(PersonsListActivity.this, "Error: " + response.message(), Toast.LENGTH_SHORT).show();
+                }
+            }
+
+            @Override
+            public void onFailure(Call<Void> call, Throwable t) {
+                Log.e("TAG", "Error al agregar "+t);
+            }
+        });
+    }
+
+    private void showAddDialog() {
+        Dialog dialog = new Dialog(this);
+        dialog.setContentView(R.layout.dialog_add_person);
+
+        EditText inputEditText = dialog.findViewById(R.id.inputEditText);
+        Button submitButton = dialog.findViewById(R.id.sendButtonDA);
+        Button cancelButtonP = dialog.findViewById(R.id.cancelButtonDA);
+
+        cancelButtonP.setOnClickListener(v -> {
+            inputEditText.setText("");
+            dialog.dismiss();
+        });
+
+        submitButton.setOnClickListener(v -> {
+            String input = inputEditText.getText().toString();
+            if (!input.isEmpty()) {
+                addPerson(api, input);
+                dialog.dismiss();
+            } else {
+                Toast.makeText(PersonsListActivity.this, "Ingresa el nombre/apodo por favor", Toast.LENGTH_SHORT).show();
+            }
+        });
+
+        dialog.show();
+    }
+
+
+    private void showGuideDialog() {
+        Dialog dialog = new Dialog(this);
+        dialog.setContentView(R.layout.dialog_guide_p);
+        dialog.show();
+    }
+
 
 }

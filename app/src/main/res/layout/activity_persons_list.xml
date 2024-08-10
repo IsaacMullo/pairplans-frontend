@@ -7,42 +7,34 @@
     android:layout_height="match_parent"
     tools:context=".PersonsListActivity">
 
-    <androidx.constraintlayout.widget.ConstraintLayout
-        android:layout_width="177dp"
-        android:layout_height="68dp"
+    <Button
+        android:id="@+id/addPersonButton"
+        android:layout_width="79dp"
+        android:layout_height="50dp"
+        android:layout_marginStart="28dp"
         android:layout_marginTop="16dp"
-        app:layout_constraintTop_toTopOf="parent"
-        tools:layout_editor_absoluteX="16dp">
-
-        <Button
-            android:id="@+id/addPersonButton"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="8dp"
-            android:layout_marginTop="8dp"
-            android:text="Agregar"
-            app:layout_constraintStart_toEndOf="@+id/floatingActionButton"
-            app:layout_constraintTop_toTopOf="parent" />
-
-        <com.google.android.material.floatingactionbutton.FloatingActionButton
-            android:id="@+id/floatingActionButton"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="4dp"
-            android:layout_marginTop="8dp"
-            android:clickable="true"
-            app:backgroundTint="#F4F2F2"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:srcCompat="@android:drawable/ic_menu_add" />
-    </androidx.constraintlayout.widget.ConstraintLayout>
+        android:text="+"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <ListView
         android:id="@+id/personsListLV"
-        android:layout_width="409dp"
+        android:layout_width="match_parent"
         android:layout_height="645dp"
         android:layout_marginTop="84dp"
         app:layout_constraintTop_toTopOf="parent"
-        tools:layout_editor_absoluteX="1dp" />
+        tools:layout_editor_absoluteX="1dp">
+
+    </ListView>
+
+    <Button
+        android:id="@+id/guideButtonP"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="32dp"
+        android:text="Guía"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

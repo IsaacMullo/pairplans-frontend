@@ -6,14 +6,28 @@ import retrofit2.http.Body;
 import retrofit2.http.DELETE;
 import retrofit2.http.GET;
 import retrofit2.http.POST;
-import retrofit2.http.Query;
+import retrofit2.http.PUT;
+import retrofit2.http.Path;
 
 public interface APIPersons {
     @GET("persons/")
     Call<List<Person>> getPersonsI();
 
-    @GET("API_REST.php")
-    Call<Person> getPersonI(
-            @Query("id") String id
+
+    @POST("persons/")
+    Call<Void> addPersonI(
+            @Body Person person
     );
+
+    @DELETE("persons/{id}/")
+    Call<Void> removePersonI(
+            @Path("id") String id
+    );
+
+    @PUT("persons/{id}/")
+    Call<Void> updatePersonI(
+            @Path("id") String id,
+            @Body Person person
+    );
+
 }
