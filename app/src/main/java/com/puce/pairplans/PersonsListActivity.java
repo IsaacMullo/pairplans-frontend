@@ -45,7 +45,6 @@ public class PersonsListActivity extends AppCompatActivity {
         AddPersonButton = findViewById(R.id.addPersonButton);
         GuideButtonP = findViewById(R.id.guideButtonP);
 
-
         PersonsListLV = (ListView) findViewById(R.id.personsListLV);
         PersonsAdapter adapter = new PersonsAdapter(this, PersonsList);
 
@@ -57,12 +56,12 @@ public class PersonsListActivity extends AppCompatActivity {
 
 
 
-        AddPersonButton.setOnClickListener(new View.OnClickListener(){
-            @Override
-            public void onClick(View v){
-                showAddDialog();
-            };
-        });
+            AddPersonButton.setOnClickListener(new View.OnClickListener(){
+                @Override
+                public void onClick(View v){
+                    showAddDialog();
+                };
+            });
 
         GuideButtonP.setOnClickListener(new View.OnClickListener(){
             @Override

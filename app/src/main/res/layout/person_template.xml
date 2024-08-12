@@ -17,27 +17,25 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <LinearLayout
-        android:layout_width="198dp"
-        android:layout_height="56dp"
-        android:layout_marginTop="36dp"
-        android:layout_marginEnd="24dp"
-        android:orientation="horizontal"
+    <Button
+        android:id="@+id/personTemplateDelete"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="44dp"
+        android:layout_marginEnd="28dp"
+        android:backgroundTint="#B62323"
+        android:text="Eliminar"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
+        app:layout_constraintTop_toTopOf="parent" />
 
-        <Button
-            android:id="@+id/personTemplateEdit"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:backgroundTint="#E69150"
-            android:text="Editar" />
-
-        <Button
-            android:id="@+id/personTemplateDelete"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:backgroundTint="#B62323"
-            android:text="Eliminar" />
-    </LinearLayout>
+    <Button
+        android:id="@+id/personTemplateEdit"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="44dp"
+        android:layout_marginEnd="16dp"
+        android:backgroundTint="#E69150"
+        android:text="Editar"
+        app:layout_constraintEnd_toStartOf="@+id/personTemplateDelete"
+        app:layout_constraintTop_toTopOf="parent" />
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -3,8 +3,12 @@ package com.puce.pairplans;
 import java.util.List;
 
 import retrofit2.Call;
+import retrofit2.http.Body;
 import retrofit2.http.DELETE;
 import retrofit2.http.GET;
+import retrofit2.http.POST;
+import retrofit2.http.PUT;
+import retrofit2.http.Path;
 import retrofit2.http.Query;
 
 public interface APIActivities {
@@ -13,14 +17,20 @@ public interface APIActivities {
             @Query("person_id") String person
     );
 
-    @GET("activities/")
-    Call<Activity> getActvityI(
-            @Query("id") String id
+    @POST("activities/")
+    Call<Void> addActivtyI(
+            @Body Activity activity
     );
 
-    @DELETE("activities/")
-    Call<Void> removeActivitiesI(
-            @Query("person_id") String person
+    @DELETE("activities/{id}/")
+    Call<Void> removeActivityI(
+            @Path("id") String id
+    );
+
+    @PUT("activities/{id}/")
+    Call<Void> updateActivityI(
+            @Path("id") String id,
+            @Body Activity activity
     );
 
 }

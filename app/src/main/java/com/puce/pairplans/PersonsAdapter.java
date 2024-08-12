@@ -94,13 +94,13 @@ public class PersonsAdapter extends ArrayAdapter<Person> {
         Person person = new Person();
         person.setName(name);
 
-
         Call<Void> call = api.updatePersonI(id, person);
         call.enqueue(new Callback<Void>() {
             @Override
             public void onResponse(Call<Void> call, Response<Void> response) {
                 if (response.isSuccessful()) {
                     PersonsList.get(position).setName(name);
+                    Toast.makeText(context, "Nombre editado correctamente", Toast.LENGTH_SHORT).show();
                     notifyDataSetChanged();
                 } else {
                     Toast.makeText(context, "No se editó.", Toast.LENGTH_SHORT).show();
@@ -109,6 +109,7 @@ public class PersonsAdapter extends ArrayAdapter<Person> {
 
             @Override
             public void onFailure(Call<Void> call, Throwable t) {
+                Toast.makeText(context, "Fallo al conectar con el servidor", Toast.LENGTH_LONG).show();
             }
         });
 
@@ -159,7 +160,6 @@ public class PersonsAdapter extends ArrayAdapter<Person> {
             String inputE = InputEditTextDE.getText().toString();
             if (!inputE.isEmpty()) {
                 editPerson(person.getId(), inputE, position);
-                Toast.makeText(context, "Nombre editado correctamente", Toast.LENGTH_SHORT).show();
                 dialog.dismiss();
             } else {
                 Toast.makeText(context, "Ingresa el nuevo nombre por favor", Toast.LENGTH_SHORT).show();

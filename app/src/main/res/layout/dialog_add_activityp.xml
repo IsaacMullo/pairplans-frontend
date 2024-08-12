@@ -11,13 +11,13 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginBottom="16dp"
-        android:text="Agrega a una persona :3" />
+        android:text="Agrega una actividad" />
 
     <EditText
-        android:id="@+id/inputEditText"
+        android:id="@+id/inputEditTextA"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="Escribe aquí el nombre o apodo"
+        android:hint="Escribe aquí la actividad"
         android:maxLength="98" />
 
     <LinearLayout
@@ -28,17 +28,17 @@
         android:layout_marginTop="20dp">
 
         <Button
-            android:id="@+id/cancelButtonDA"
+            android:id="@+id/cancelButtonDAA"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Cancelar"
             android:layout_marginRight="16dp"/>
 
         <Button
-            android:id="@+id/sendButtonDA"
+            android:id="@+id/sendButtonDAA"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Enviar"/>
+            android:text="Agregar"/>
     </LinearLayout>
 
 </LinearLayout>
