@@ -7,10 +7,10 @@
 
     <TextView
         android:id="@+id/activityNameTV"
-        android:layout_width="129dp"
-        android:layout_height="55dp"
+        android:layout_width="122dp"
+        android:layout_height="wrap_content"
         android:layout_marginStart="28dp"
-        android:layout_marginTop="32dp"
+        android:layout_marginTop="40dp"
         android:text="activity"
         android:textSize="18sp"
         android:textStyle="bold"
@@ -21,12 +21,11 @@
         android:id="@+id/activityTemplateEdit"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="28dp"
         android:layout_marginTop="32dp"
+        android:layout_marginEnd="20dp"
+        android:backgroundTint="#E69150"
         android:text="Editar"
         app:layout_constraintEnd_toStartOf="@+id/activityTemplateDelete"
-        app:layout_constraintHorizontal_bias="0.266"
-        app:layout_constraintStart_toEndOf="@+id/activityNameTV"
         app:layout_constraintTop_toTopOf="parent" />
 
     <Button
@@ -35,6 +34,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="32dp"
         android:layout_marginEnd="8dp"
+        android:backgroundTint="#B62323"
         android:text="Eliminar"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
